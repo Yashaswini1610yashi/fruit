@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Fruit Quality Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Fallback for FontAwesome if kit fails -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-brain"></i> FruitAI
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#how-it-works">Process</a></li>
+            <li><a href="#demo" class="nav-btn">Try Demo</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>AI-Powered <span class="highlight">Fruit Quality</span> Detection</h1>
+            <p>Revolutionizing agriculture with Deep Learning. Instantly detect fresh and rotten fruits using our
+                advanced CNN model.</p>
+            <a href="#demo" class="cta-button">Explore the Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-visual">
+            <div class="scan-effect"></div>
+            <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1000&auto=format&fit=crop"
+                alt="Fruit Scanning AI" class="hero-img">
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="about" class="section">
+        <h2 class="section-title">Why AI for Fruit Quality?</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fas fa-search-minus icon-large"></i>
+                <h3>The Problem</h3>
+                <p>Manual inspection is slow, inconsistent, and labor-intensive, leading to food waste and inefficiency
+                    in supply chains.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microchip icon-large"></i>
+                <h3>Our Solution</h3>
+                <p>A Convolutional Neural Network (CNN) that automates quality control with high precision and real-time
+                    processing.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-leaf icon-large"></i>
+                <h3>The Impact</h3>
+                <p>Reduces waste, ensures standard quality for consumers, and optimizes sorting for farmers and
+                    retailers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section bg-darker">
+        <h2 class="section-title">How It Works</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-icon"><i class="fas fa-upload"></i></div>
+                <h4>Input</h4>
+                <p>Upload fruit image</p>
+            </div>
+            <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="step">
+                <div class="step-icon"><i class="fas fa-network-wired"></i></div>
+                <h4>CNN Processing</h4>
+                <p>Feature extraction</p>
+            </div>
+            <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="step">
+                <div class="step-icon"><i class="fas fa-chart-bar"></i></div>
+                <h4>Classification</h4>
+                <p>Fresh vs Rotten</p>
+            </div>
+            <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+            <div class="step">
+                <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                <h4>Result</h4>
+                <p>Instant Output</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset & Classes -->
+    <section class="section">
+        <h2 class="section-title">Supported Categories</h2>
+        <div class="classes-container">
+            <div class="class-group fresh">
+                <h3><i class="fas fa-smile"></i> Fresh Fruits</h3>
+                <div class="fruit-badges">
+                    <span class="badge">Apples</span>
+                    <span class="badge">Bananas</span>
+                    <span class="badge">Oranges</span>
+                </div>
+            </div>
+            <div class="class-group rotten">
+                <h3><i class="fas fa-frown"></i> Rotten Fruits</h3>
+                <div class="fruit-badges">
+                    <span class="badge">Apples</span>
+                    <span class="badge">Bananas</span>
+                    <span class="badge">Oranges</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo (The Core App) -->
+    <section id="demo" class="section demo-section">
+        <div class="demo-container">
+            <h2>Live Analysis Demo</h2>
+            <p>Upload an image to see the AI in action.</p>
+
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)" hidden>
+                <div class="upload-content" onclick="document.getElementById('imageInput').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click or Drag & Drop Image Here</p>
+                </div>
+            </div>
+
+            <!-- Preview & Result Container -->
+            <div id="imagePreviewContainer" class="preview-container hidden">
+                <img id="imagePreview" src="" alt="Preview">
+                <button id="analyzeBtn" class="analyze-btn" onclick="uploadImage()">
+                    <i class="fas fa-bolt"></i> Analyze Fruit
+                </button>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader-container hidden">
+                <div class="spinner"></div>
+                <p>Analyzing quality...</p>
+            </div>
+
+            <!-- Result Display -->
+            <div id="result" class="result-card hidden">
+                <h3>Analysis Report</h3>
+                <div class="result-details">
+                    <div class="result-item">
+                        <span>Quality:</span>
+                        <h2 id="predictionText">Fresh</h2>
+                    </div>
+                    <div class="result-item">
+                        <span>Confidence:</span>
+                        <h2 id="confidenceText">98%</h2>
+                    </div>
+                </div>
+                <div class="progress-bg">
+                    <div id="confidenceBar" class="progress-fill"></div>
+                </div>
+                <!-- Reset Button -->
+                <button class="reset-btn" onclick="resetDemo()">Analyze Another</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section bg-darker">
+        <h2 class="section-title">Model Performance</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>98%</h2>
+                <p>Testing Accuracy</p>
+            </div>
+            <div class="stat-item">
+                <h2>
+                    < 1s</h2>
+                        <p>Inference Time</p>
+            </div>
+            <div class="stat-item">
+                <h2>CNN</h2>
+                <p>Deep Learning Architecture</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="section">
+        <h2 class="section-title">Applications</h2>
+        <div class="tags-cloud">
+            <span class="tag">Smart Agriculture</span>
+            <span class="tag">Food Quality Control</span>
+            <span class="tag">Automated Sorting</span>
+            <span class="tag">Supply Chain Optimization</span>
+            <span class="tag">Retail Management</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>FruitAI Project</h3>
+            <p>Developed for the Advanced Deep Learning Course</p>
+            <p class="team">Team: AntiGravity & User</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
