@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image - FruitAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="subpage">
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <i class="fas fa-brain"></i> FruitAI
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="upload.html" class="active">Analyze</a></li>
+        </ul>
+    </nav>
+
+    <section class="section demo-section">
+        <div class="demo-container">
+            <h1>Upload Fruit Image</h1>
+            <p>Select a clear image of an apple, banana, or orange for the best results.</p>
+
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <div class="upload-content" onclick="document.getElementById('imageInput').click()">
+                    <i class="fas fa-image icon-large"></i>
+                    <p>Click to browse or Drag & Drop</p>
+                </div>
+            </div>
+
+            <div id="imagePreviewContainer" class="preview-container hidden">
+                <img id="imagePreview" src="" alt="Preview">
+                <div class="action-btns">
+                    <button class="reset-btn-small" onclick="location.reload()">
+                        <i class="fas fa-redo"></i> Change
+                    </button>
+                    <button id="analyzeBtn" class="analyze-btn">
+                        <i class="fas fa-bolt"></i> Analyze Now
+                    </button>
+                </div>
+            </div>
+
+            <div id="loader" class="loader-container hidden">
+                <div class="spinner"></div>
+                <p>Running Neural Network...</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/upload.js"></script>
+    <script src="js/predict.js"></script>
+</body>
+
+</html>

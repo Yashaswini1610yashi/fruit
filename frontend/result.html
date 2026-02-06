@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result - FruitAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="subpage">
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='index.html'">
+            <i class="fas fa-brain"></i> FruitAI
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="result-layout">
+            <div class="result-image-side">
+                <img id="resultImage" src="" alt="Analyzed Fruit">
+            </div>
+            <div class="result-data-side">
+                <div class="result-card">
+                    <h2>Analysis Summary</h2>
+                    <hr>
+                    <div class="result-item">
+                        <span>Classification:</span>
+                        <h1 id="predictionText">--</h1>
+                    </div>
+                    <div class="result-item">
+                        <span>Confidence Score:</span>
+                        <h2 id="confidenceText">--</h2>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="confidenceChart"></canvas>
+                    </div>
+                    <button class="cta-button full-width" onclick="window.location.href='upload.html'">
+                        Analyze Another Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/chart.js"></script>
+    <script>
+        // Simple session recovery for result page
+        window.onload = () => {
+            const data = JSON.parse(localStorage.getItem('lastPrediction'));
+            const image = localStorage.getItem('lastImage');
+            if (data && image) {
+                document.getElementById('resultImage').src = image;
+                document.getElementById('predictionText').innerText = data.result;
+                document.getElementById('confidenceText').innerText = data.confidence + '%';
+
+                // Color coding
+                if (data.result === 'Fresh') {
+                    document.getElementById('predictionText').style.color = '#00f260';
+                } else {
+                    document.getElementById('predictionText').style.color = '#ff4757';
+                }
+
+                initChart(data.confidence);
+            }
+        };
+    </script>
+</body>
+
+</html>

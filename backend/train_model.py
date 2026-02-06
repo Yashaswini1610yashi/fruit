@@ -52,7 +52,8 @@ class FruitDataset(keras.utils.PyDataset):
 
 
 
-IMAGE_SIZE = (128, 128)
+from config import IMAGE_SIZE, CLASS_NAMES
+
 BATCH_SIZE = 32
 
 base_dir = os.path.dirname(os.path.abspath(__file__))

@@ -1,0 +1,47 @@
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md
+	new file:   app.py
+	renamed:    backend/model/fruit_model.h5 -> backend/__init__.py
+	deleted:    backend/app.py
+	modified:   backend/config.py
+	new file:   backend/debug_path.py
+	renamed:    backend/model/labels.txt -> backend/model_impl/__init__.py
+	renamed:    backend/model/model_loader.py -> backend/model_impl/fruit_model.h5
+	new file:   backend/model_impl/labels.txt
+	new file:   backend/model_impl/model_loader.py
+	new file:   backend/preprocessing/__init__.py
+	modified:   backend/preprocessing/augment.py
+	modified:   backend/preprocessing/image_preprocess.py
+	new file:   backend/routes/__init__.py
+	modified:   backend/routes/predict.py
+	modified:   backend/train_model.py
+	new file:   backend/utils/__init__.py
+	modified:   backend/utils/response_formatter.py
+	new file:   debug_root.py
+	modified:   docs/api_flow.md
+	modified:   docs/dataset_description.md
+	modified:   frontend/css/style.css
+	modified:   frontend/index.html
+	modified:   frontend/js/chart.js
+	modified:   frontend/js/predict.js
+	modified:   frontend/js/upload.js
+	modified:   frontend/result.html
+	deleted:    frontend/style.css
+	modified:   frontend/upload.html
+	modified:   training/evaluate.py
+	modified:   training/save_model.py
+	modified:   training/train_model.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   backend/routes/predict.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	backend/test_mobilenet.py
+	backend/test_torchvision.py
+	git_status.txt
+
