@@ -11,7 +11,7 @@ def load_fruit_model(model_path):
         return None
     
     print(f"🚀 Loading model from {model_path}...")
-    model = keras.models.load_model(model_path)
+    model = keras.models.load_model(model_path, compile=False)
     
     # Warmup
     print("🔥 Warming up model...")

@@ -12,13 +12,16 @@ curr_dir = os.path.dirname(os.path.abspath(__file__))
 if curr_dir not in sys.path:
     sys.path.insert(0, curr_dir)
 
+import torch # Ensure torch is loaded for Keras backend
+
+# ...
 # Import backend modules
 try:
     from backend.config import MODEL_PATH
     from backend.model_impl.model_loader import load_fruit_model
     from backend.preprocessing.image_preprocess import preprocess_image
-except ImportError:
-    st.error("❌ Could not import backend modules. Ensure the project structure is intact.")
+except ImportError as e:
+    st.error(f"❌ Could not import backend modules: {str(e)}")
     st.stop()
 
 # Page configuration
