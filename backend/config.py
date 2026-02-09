@@ -15,7 +15,7 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # Prediction Labels
-# Based on current app.py logic: > 0.5 is Rotten, <= 0.5 is Fresh
+# Based on current flask_app.py logic: > 0.5 is Rotten, <= 0.5 is Fresh
 CLASS_NAMES = ["Fresh", "Rotten"]
 
 # Server Configuration
