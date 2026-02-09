@@ -1,0 +1,11 @@
+streamlit
+flask
+flask-cors
+keras
+torch
+torchvision
+torchaudio
+numpy
+pillow
+opencv-python-headless
+kagglehub
